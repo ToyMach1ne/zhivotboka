@@ -1,0 +1,245 @@
+@import 'import/reset';
+@import 'import/variables';
+@import 'import/buttons';
+@import 'import/forms';
+@import 'import/lists';
+@import 'import/tables';
+@import 'import/mixin';
+@import 'import/wordpress';
+@import 'grid/bootstrap';
+@import 'grid/bootstrap-theme';
+@import 'super_sprite';
+@import 'helvetica';
+
+body {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $fnorm;
+  line-height: $base-line-height;
+
+  min-width: 320px;
+
+  transition: $base-transition;
+
+  color: $base-font-color;
+  background-color: $base-background-color;
+
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  font-size: $base-font-size;
+  line-height: $heading-line-height;
+
+  margin: 0 0 $small-spacing;
+}
+p,
+pre {
+  margin: 0 0 $small-spacing;
+}
+a {
+  transition: $base-transition;
+  text-decoration: none;
+
+  color: $action-color;
+  &:active,
+  &:focus,
+  &:hover {
+    color: darken($action-color, 15%);
+  }
+  &:active,
+  &:focus {
+    color: lighten($action-color, 15%);
+    outline: none;
+  }
+}
+hr {
+  margin: $base-spacing 0;
+
+  border-top: none;
+  border-right: none;
+  border-bottom: $base-border;
+  border-left: none;
+}
+img,
+picture {
+  max-width: 100%;
+  margin: 0;
+}
+.wrapper {
+  position: relative;
+
+  width: 100%;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+
+  @extend .clearfix;
+}
+.container {
+  position: relative;
+
+  max-width: $width;
+}
+header {
+  padding-top: 32px;
+  position: relative;
+  &:before {
+    height: 147px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 108px;
+    left: 0;
+    @extend .dblock;
+    right: 0;
+    background-image: url(../img/navbar-bg.png);
+  }
+  .header--logo {
+    font-size: 30px;
+    font-weight: 900;
+    padding-left: 60px;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    a {
+      text-decoration: none;
+
+      color: $black;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    span {
+      font-size: 13px;
+      font-weight: 400;
+      font-family: 'RobotoCondensed';
+      display: block;
+    }
+    h1 {
+      margin-top: 0;
+      font-family: 'HelveticaNeueCyr';
+    }
+  }
+  .header--search-form {
+    position: relative;
+
+    width: 470px;
+    height: 40px;
+    .header--search-input {
+      width: 100%;
+      height: 100%;
+
+      border: 1px solid #dedede;
+      border-radius: 4px;
+    }
+    .header--search-submit {
+      line-height: 1;
+
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      width: 50px;
+      padding-top: 8px;
+
+      border: 0;
+      border-bottom: 2px solid $orange-black;
+      border-radius: 0 15% 15% 0;
+      background-color: $orange;
+      i {
+        font-size: 20px;
+
+        color: #fff;
+      }
+    }
+  }
+  .header--advice {
+    position: relative;
+
+    padding-left: 80px;
+
+    border-radius: 3%;
+    background-color: $gray;
+    &:before {
+      position: absolute;
+      z-index: 1;
+      top: -14px;
+      left: 13px;
+
+      width: 59px;
+      height: 81px;
+
+      background-image: url(../img/header--advice.png);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @extend .dblock;
+    }
+    h5 {
+      font-size: 18px;
+      font-weight: bold;
+      font-style: italic;
+
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+    .header--advice-name {
+      font-size: 16px;
+    }
+    .header--advice-descr {
+      font-size: 12px;
+    }
+  }
+  .nav-container {
+        padding-top: 15px;
+    .nav-bg {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      left: 0;
+    }
+    .navigation {
+      .headnav {
+        margin-bottom: 0;
+        height: 48px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        align-items:center;
+        padding-bottom: 5px;
+        li {
+          display: inline-block;
+          list-style-type: none;
+              padding-right: 30px;
+          a {
+            color: $black;
+            text-transform: uppercase;
+            font-weight: bold;
+            &:hover {
+                text-decoration: none;
+                background-color: $yellow-hover;
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@import 'fonts/font_fontawesome';
+@import 'base64';
+@import 'import/print';
