@@ -263,6 +263,12 @@ header {
     }
   }
   .sidebar {
+    .news-title {
+      font-size: 25px;
+      font-weight: bold;
+      padding-top:50px;
+      padding-bottom: 25px;
+    }
     h6 {
       font-size: 18px;
       font-weight: bold;
@@ -375,6 +381,31 @@ header {
       }
     }
   }
+  .category-list-wrapper {
+    .category-list {
+      @extend .clearfix;
+      background-color: #f8f8f8;
+      margin-bottom: 40px;
+      padding: 20px;
+      li {
+        width: 33%;
+        float: left;
+        a {
+          font-size: 16px;
+          color: #54a1dd;
+          &:before {
+          content:'\f005';
+        }
+          &:hover {
+            &:before {
+          color:$orange;
+        }
+          }
+
+        }
+      }
+    }
+  }
   .category-block {
     padding-bottom: 20px;
     .category-block-img {
@@ -456,10 +487,57 @@ header {
       }
     }
   }
+  .pagination-block {
+    border-top: 1px solid #f0f0ef;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    p {
+      display: inline-block;
+    }
+    .pagination-buttons {
+      .pag-numbers {
+        span {
+      font-size: 13px;
+        }
+
+      }
+      float: right;
+          a {
+             display: inline-block;
+      span {
+          font-size: 18px;
+          display: flex;
+          width: 30px;
+          height: 30px;
+          color: $black;
+          border: 1px solid #dedede;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            text-decoration: none;
+            color: $black;
+            border: 1px solid $orange;
+          }
+        }
+    }
+    }
+
+  }
+  .category-clouds {
+    height: auto !important;
+    a {
+      &:last-child {
+        color: #3b94d9 !important;
+        &:hover {
+              color: #91c6f2 !important;
+              text-decoration: underline !important;
+        }
+      }
+    }
+  }
   .tag-cloud {
     height: 200px;
     padding: 25px;
-
     text-align: justify;
 
     border: 1px dashed #dedede;
@@ -525,6 +603,10 @@ header {
       font-size: 16px;
 
       text-align: justify;
+    }
+    .category-text {
+      text-transform: capitalize;
+      font-weight: bold;
     }
   }
 }
