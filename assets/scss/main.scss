@@ -6,9 +6,12 @@
 @import 'import/tables';
 @import 'import/mixin';
 @import 'import/wordpress';
+
 @import 'grid/bootstrap';
 @import 'grid/bootstrap-theme';
+
 @import 'super_sprite';
+
 @import 'helvetica';
 
 body {
@@ -893,9 +896,10 @@ header {
     }
     .posts-by-theme {
       height: 160px;
+      margin-bottom: 40px;
       padding-top: 10px;
       padding-left: 25px;
-      margin-bottom: 40px;
+
       background-color: #f8f8f8;
       background-image: url(../img/single-divider.png);
       background-repeat: no-repeat;
@@ -910,6 +914,7 @@ header {
           font-size: 16px;
           font-weight: 400;
           line-height: 1;
+
           padding-top: 15px;
           padding-left: 5px;
 
@@ -945,50 +950,63 @@ header {
     .title-underposts {
       font-size: 22px;
       font-weight: bold;
+
       padding-bottom: 20px;
     }
     .table-title {
       font-size: 18px;
       font-weight: bold;
+
       padding-top: 30px;
       padding-bottom: 20px;
     }
     .all-columns {
       font-size: 14px;
       font-weight: 400;
-      height: 50px;
-      border:1px dashed #dedede;
       line-height: 3.3;
+
+      position: relative;
+
+      height: 50px;
+      margin-bottom: 20px;
       padding-left: 60px;
+
+      border: 1px dashed #dedede;
       background-image: url(../img/border.png);
       background-repeat: no-repeat;
       background-position: 45px 6px;
-      position: relative;
-      margin-bottom: 20px;
       &:before {
-        @extend .dblock;
+        position: absolute;
+        top: 11px;
+        left: 11px;
+
+        width: 25px;
+        height: 25px;
+
         background-image: url(../img/inform.png);
         background-repeat: no-repeat;
-        height: 25px;
-        position: absolute;
-        width: 25px;
-        left: 11px;
-        top: 11px;
+
+        @extend .dblock;
       }
       &:after {
-        content: '\f07e';
-        display: block;
-        height: 10px;
-        width: 10px;
         position: absolute;
-        right: 38%;
         top: 0;
+        right: 38%;
+
+        display: block;
+
+        width: 10px;
+        height: 10px;
+
+        content: '\f07e';
       }
     }
     .product-descr {
-      text-align: center;
-      border:1px solid #dedede;
       margin-bottom: 40px;
+
+      text-align: center;
+
+      border: 1px solid #dedede;
       tr {
         font-size: 14px;
         font-weight: 400;
@@ -996,15 +1014,17 @@ header {
           padding: 15px;
         }
         &:first-child {
-          flex: 14px;
           font-weight: bold;
+
+          flex: 14px;
           td {
             padding: 20px;
           }
         }
         td {
+          white-space: pre-line;
+
           border-right: 1px solid #dedede;
-          white-space:pre-line;
         }
         &:nth-child(even) {
           background-color: #fcfcfc;
@@ -1127,70 +1147,82 @@ footer {
   }
 }
 .error-body {
-  background-image: url(../img/404-bg.png);
   position: relative;
+
+  background-image: url(../img/404-bg.png);
   &:before {
-     @extend .dblock;
-     background-image: url(../img/404-border.png);
-     background-repeat: no-repeat;
-     height: 50px;
     position: absolute;
-    width: 100%;
     bottom: 0;
+
+    width: 100%;
+    height: 50px;
+
+    background-image: url(../img/404-border.png);
+    background-repeat: no-repeat;
+
+    @extend .dblock;
   }
   .erroe-page {
-    padding-left: 440px;
     padding-top: 150px;
-.header--logo {
-    font-size: 30px;
-    font-weight: 900;
-    padding-left: 60px;
-    background-image: url(../img/logo.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    a {
-      text-decoration: none;
-      color: $black;
-    }
-    span {
-      font-family: 'RobotoCondensed';
-      font-size: 13px;
-      font-weight: 400;
-      width: 250px;
-      display: block;
-    }
-    h1 {
-      font-family: 'HelveticaNeueCyr';
-      margin-top: 0;
+    padding-left: 440px;
+    .header--logo {
       font-size: 30px;
-    }
-  }
-  }
-.error-title {
-  font-size: 200px;
-  font-weight: bold;
-  text-align: center;
-}
-p {
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
-}
-.timer {
-  p {
-    font-size: 16px;
-    font-weight: 400;
-    .time {
-      font-size: 30px;
-      font-weight: bold;
-    }
-    .return {
-    flex: 16px;
-    color:#3b94d9;
-    }
+      font-weight: 900;
 
+      padding-left: 60px;
+
+      background-image: url(../img/logo.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      a {
+        text-decoration: none;
+
+        color: $black;
+      }
+      span {
+        font-family: 'RobotoCondensed';
+        font-size: 13px;
+        font-weight: 400;
+
+        display: block;
+
+        width: 250px;
+      }
+      h1 {
+        font-family: 'HelveticaNeueCyr';
+        font-size: 30px;
+
+        margin-top: 0;
+      }
+    }
   }
-}
+  .error-title {
+    font-size: 200px;
+    font-weight: bold;
+
+    text-align: center;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 400;
+
+    text-align: center;
+  }
+  .timer {
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      .time {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .return {
+        color: #3b94d9;
+
+        flex: 16px;
+      }
+    }
+  }
 }
 @import 'fonts/font_fontawesome';
 @import 'base64';

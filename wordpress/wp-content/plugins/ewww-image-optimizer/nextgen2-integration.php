@@ -102,16 +102,16 @@ class ewwwngg {
 				$file_path = $storage->get_image_abspath($image, $size);
 				ewwwio_debug_message( "optimizing (nextgen): $file_path" );
 				// optimize the image and grab the results
-				$res = ewww_image_optimizer($file_path, 2, false, false, $full_size);
+				$res = ewww_image_optimizer( $file_path, 2, false, false, $full_size );
 				ewwwio_debug_message( "results {$res[1]}" );
 				// only if we're dealing with the full-size original
-				if ($size === 'full') {
+				if ( $size === 'full' ) {
 					// update the metadata for the optimized image
 					$image->meta_data['ewww_image_optimizer'] = $res[1];
 				} else {
-					$image->meta_data[$size]['ewww_image_optimizer'] = $res[1];
+					$image->meta_data[ $size ]['ewww_image_optimizer'] = $res[1];
 				}
-				nggdb::update_image_meta($image_id, $image->meta_data);
+				nggdb::update_image_meta( $image_id, $image->meta_data );
 				ewwwio_debug_message( 'storing results for full size image' );
 			}
 		}
@@ -228,7 +228,7 @@ class ewwwngg {
 			// check to see if we have a tool to handle the mimetype detected
 			if ( ! defined( 'EWWW_IMAGE_OPTIMIZER_JPEGTRAN' ) ) {
 				ewww_image_optimizer_tool_init();
-				ewww_image_optimizer_notice_utils( false );
+				ewww_image_optimizer_notice_utils( 'quiet' );
 			}
 //			$skip = ewww_image_optimizer_skip_tools();
 	                switch ( $type ) {
@@ -461,7 +461,7 @@ class ewwwngg {
 		// store the image IDs to process in the db
 		update_option( 'ewww_image_optimizer_bulk_ngg_attachments', $images, false );
 		// add the EWWW IO script
-		wp_enqueue_script( 'ewwwbulkscript', plugins_url( '/includes/eio.js', __FILE__ ), array( 'jquery', 'jquery-ui-progressbar', 'jquery-ui-slider', 'postbox', 'dashboard' ) );
+		wp_enqueue_script( 'ewwwbulkscript', plugins_url( '/includes/eio.js', __FILE__ ), array( 'jquery', 'jquery-ui-progressbar', 'jquery-ui-slider', 'postbox', 'dashboard' ), EWWW_IMAGE_OPTIMIZER_VERSION );
 		//replacing the built-in nextgen styling rules for progressbar, partially because the bulk optimize page doesn't work without them
 		wp_deregister_style( 'ngg-jqueryui' );
 		wp_deregister_style( 'ngg-jquery-ui' );

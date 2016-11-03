@@ -1,7 +1,7 @@
 <?php
 /**
  * Integrate image optimizers into WordPress.
- * @version 3.0.2
+ * @version 3.1.3
  * @package EWWW_Image_Optimizer
  */
 /*
@@ -10,7 +10,7 @@ Plugin URI: https://wordpress.org/extend/plugins/ewww-image-optimizer/
 Description: Reduce file sizes for images within WordPress including NextGEN Gallery and GRAND FlAGallery. Uses jpegtran, optipng/pngout, and gifsicle.
 Author: Shane Bishop
 Text Domain: ewww-image-optimizer
-Version: 3.0.2
+Version: 3.1.3
 Author URI: https://ewww.io/
 License: GPLv3
 */
@@ -458,11 +458,12 @@ function ewww_image_optimizer_skip_tools() {
 
 // we check for safe mode and exec, then also direct the user where to go if they don't have the tools installed
 // this is another function called by hook usually
-function ewww_image_optimizer_notice_utils( $verbose = true ) {
+function ewww_image_optimizer_notice_utils( $quiet = null ) {
 	ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
 	// Check if exec is disabled
 	if ( ewww_image_optimizer_exec_check() ) {
-		if ( $verbose ) {
+		// need to be a little particular with the quiet parameter
+		if ( $quiet !== 'quiet' ) {
 			//display a warning if exec() is disabled, can't run much of anything without it
 			echo "<div id='ewww-image-optimizer-warning-exec' class='error'><p>" . esc_html__( 'EWWW Image Optimizer requires exec() or an API key. Your system administrator has disabled the exec() function, ask them to enable it.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) . "</p></div>";
 		}
@@ -474,7 +475,7 @@ function ewww_image_optimizer_notice_utils( $verbose = true ) {
 		return;
 		// otherwise, query the php settings for safe mode
 	} elseif ( ewww_image_optimizer_safemode_check() ) {
-		if ( $verbose ) {
+		if ( $quiet !== 'quiet' ) {
 			// display a warning to the user
 			echo "<div id='ewww-image-optimizer-warning-safemode' class='error'><p>" . esc_html__( 'Safe Mode is turned on for PHP. This plugin cannot operate in Safe Mode unless you have an API key.', EWWW_IMAGE_OPTIMIZER_DOMAIN ) . "</p></div>";
 		}
@@ -564,7 +565,7 @@ function ewww_image_optimizer_notice_utils( $verbose = true ) {
 	// expand the missing utilities list for use in the error message
 	$msg = implode( ', ', $missing );
 	// if there is a message, display the warning
-	if ( ! empty( $msg ) && $verbose ) {
+	if ( ! empty( $msg ) && $quiet !== 'quiet' ) {
 		if ( ! function_exists( 'is_plugin_active_for_network' ) && is_multisite() ) {
 			// need to include the plugin library for the is_plugin_active function
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -884,6 +885,7 @@ function ewww_image_optimizer_md5check( $path ) {
 function ewww_image_optimizer_mimetype( $path, $case ) {
 	ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
 	ewwwio_debug_message( "testing mimetype: $path" );
+	$type = false;
 	if ( $case === 'i' && preg_match( '/^RIFF.+WEBPVP8/', file_get_contents( $path, NULL, NULL, 0, 16 ) ) ) {
 		return 'image/webp';
 	}
@@ -1253,11 +1255,9 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	session_write_close();
 	$bypass_optimization = apply_filters( 'ewww_image_optimizer_bypass', false, $file );
 	if ( true === $bypass_optimization ) {
-		// tell the user optimization was skipped
-		$msg = __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN );
 		ewwwio_debug_message( "optimization bypassed: $file" );
-		// send back the above message
-		return array( false, $msg, $converted, $file );
+		// tell the user optimization was skipped
+		return array( false, __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $file );
 	}
 	// initialize the original filename 
 	$original = $file;
@@ -1292,12 +1292,15 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	}
 	ewwwio_debug_message( "permissions: $file_perms, owner: $file_owner, group: $file_group" );
 	$type = ewww_image_optimizer_mimetype( $file, 'i' );
-	if ( strpos( $type, 'image' ) === FALSE && strpos( $type, 'pdf' ) === FALSE ) {
+	if ( ! $type ) {
 		ewwwio_debug_message( 'could not find any functions for mimetype detection' );
 		//otherwise we store an error message since we couldn't get the mime-type
-		return array( false, __( 'Unknown type: ' . $type, EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
-		$msg = __('Missing finfo_file(), getimagesize() and mime_content_type() PHP functions', EWWW_IMAGE_OPTIMIZER_DOMAIN);
-		return array(false, $msg, $converted, $original);
+		return array( false, __( 'Unknown file type', EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
+	}
+	//not an image or pdf
+	if ( strpos( $type, 'image' ) === FALSE && strpos( $type, 'pdf' ) === FALSE ) {
+		ewwwio_debug_message( "unsupported mimetype: $type" );
+		return array( false, __( 'Unsupported file type', EWWW_IMAGE_OPTIMIZER_DOMAIN ) . ": $type", $converted, $original );
 	}
 	if ( ! EWWW_IMAGE_OPTIMIZER_CLOUD ) {
 		if ( ! defined( 'EWWW_IMAGE_OPTIMIZER_NOEXEC' ) ) {
@@ -1370,18 +1373,14 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	$orig_size = filesize( $file );
 	ewwwio_debug_message( "original filesize: $orig_size" );
 	if ( $orig_size < ewww_image_optimizer_get_option( 'ewww_image_optimizer_skip_size' ) ) {
-		// tell the user optimization was skipped
-		$msg = __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN );
 		ewwwio_debug_message( "optimization bypassed due to filesize: $file" );
-		// send back the above message
-		return array( false, $msg, $converted, $file );
+		// tell the user optimization was skipped
+		return array( false, __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $file );
 	}
 	if ( $type == 'image/png' && ewww_image_optimizer_get_option( 'ewww_image_optimizer_skip_png_size' ) && $orig_size > ewww_image_optimizer_get_option( 'ewww_image_optimizer_skip_png_size' ) ) {
-		// tell the user optimization was skipped
-		$msg = __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN );
 		ewwwio_debug_message( "optimization bypassed due to filesize: $file" );
-		// send back the above message
-		return array( $file, $msg, $converted, $file );
+		// tell the user optimization was skipped
+		return array( false, __( "Optimization skipped", EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $file );
 	}
 	// initialize $new_size with the original size, HOW ABOUT A ZERO...
 	//$new_size = $orig_size;
@@ -1515,7 +1514,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				}*/
 				ewwwio_debug_message( "optimized JPG size: $new_size" );
 				// if the best-optimized is smaller than the original JPG, and we didn't create an empty JPG
-				if ( $orig_size > $new_size && $new_size != 0 && ewww_image_optimizer_mimetype($progfile, 'i') == $type ) {
+				if ( $orig_size > $new_size && $new_size != 0 && ewww_image_optimizer_mimetype( $progfile, 'i' ) == $type ) {
 					// replace the original with the optimized file
 					rename($progfile, $file);
 					// store the results of the optimization
@@ -1767,7 +1766,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 					ewwwio_debug_message( 'attempting lossy reduction' );
 					exec( "$nice " . $tools['PNGQUANT'] . " " . ewww_image_optimizer_escapeshellarg( $file ) );
 					$quantfile = preg_replace( '/\.\w+$/', '-fs8.png', $file );
-					if ( is_file( $quantfile ) && filesize( $file ) > filesize( $quantfile ) && ewww_image_optimizer_mimetype($quantfile, 'i') == $type ) {
+					if ( is_file( $quantfile ) && filesize( $file ) > filesize( $quantfile ) && ewww_image_optimizer_mimetype( $quantfile, 'i' ) == $type ) {
 						ewwwio_debug_message( "lossy reduction is better: original - " . filesize( $file ) . " vs. lossy - " . filesize( $quantfile ) );
 						rename( $quantfile, $file );
 					} elseif ( is_file( $quantfile ) ) {
@@ -2153,14 +2152,15 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 			break;
 		default:
 			// if not a JPG, PNG, or GIF, tell the user we don't work with strangers
-			return array( $file, __( 'Unknown type: ' . $type, EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
+			return array( false, __( 'Unsupported file type', EWWW_IMAGE_OPTIMIZER_DOMAIN ) . ": $type", $converted, $original );
+//			return array( false, __( 'Unsupported type: ' . $type, EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
 	}
 	// allow other plugins to run operations on the images after optimization.
 	// NOTE: it is recommended to do any image modifications prior to optimization, otherwise you risk un-optimizing your images here.
 	do_action( 'ewww_image_optimizer_post_optimization', $file, $type );
 	// if their cloud api license limit has been exceeded
 	if ( $result == 'exceeded' ) {
-		return array( $file, __( 'License exceeded', EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
+		return array( false, __( 'License exceeded', EWWW_IMAGE_OPTIMIZER_DOMAIN ), $converted, $original );
 	}
 	if ( ! empty( $new_size ) ) {
 		// Set correct file permissions
@@ -2174,7 +2174,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 	}
 	ewwwio_memory( __FUNCTION__ );
 	// otherwise, send back the filename, the results (some sort of error message), the $converted flag, and the name of the original image
-	return array( $file, $result, $converted, $original );
+	return array( false, $result, $converted, $original );
 }
 
 // creates webp images alongside JPG and PNG files
