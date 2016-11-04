@@ -96,7 +96,7 @@ header {
   padding-top: 32px;
   &:before {
     position: absolute;
-    top: 108px;
+    top: 98px;
     right: 0;
     left: 0;
 
@@ -226,11 +226,7 @@ header {
     }
     .navigation {
       .headnav {
-        display: -webkit-flex;
-        display:    -moz-flex;
-        display:     -ms-flex;
-        display:      -o-flex;
-        display:         flex;
+        display: flex;
 
         height: 48px;
         margin-bottom: 0;
@@ -409,38 +405,35 @@ header {
     }
   }
   .content-title {
-    padding: 30px 10px;
-    h6 {
-      font-size: 36px;
-      font-weight: bold;
+    font-size: 36px;
+    font-weight: bold;
 
-      color: $black;
-      a {
-        float: right;
+    color: $black;
+    a {
+      float: right;
 
-        padding-right: 10px;
+      padding-right: 10px;
+      &:hover {
+        text-decoration: none;
+      }
+      span {
+        font-size: 18px;
+
+        display: flex;
+
+        width: 30px;
+        height: 30px;
+
+        color: $black;
+        border: 1px solid #dedede;
+
+        align-items: center;
+        justify-content: center;
         &:hover {
           text-decoration: none;
-        }
-        span {
-          font-size: 18px;
-
-          display: flex;
-
-          width: 30px;
-          height: 30px;
 
           color: $black;
-          border: 1px solid #dedede;
-
-          align-items: center;
-          justify-content: center;
-          &:hover {
-            text-decoration: none;
-
-            color: $black;
-            border: 1px solid $orange;
-          }
+          border: 1px solid $orange;
         }
       }
     }
@@ -474,7 +467,7 @@ header {
     }
   }
   .category-block {
-    padding-bottom: 20px;
+    height: 310px;
     .category-block-img {
       position: relative;
       z-index: 0;
@@ -514,6 +507,25 @@ header {
         justify-content: flex-start;
       }
     }
+    h5 {
+      font-size: 14px;
+      font-weight: bold;
+
+      margin: 0;
+      padding: 10px 0;
+
+      color: $orange;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 400;
+
+      height: 70px;
+      margin: 0;
+      margin-bottom: 10px;
+
+      color: $black;
+    }
     &:hover {
       a {
         text-decoration: none;
@@ -530,27 +542,19 @@ header {
         color: #4c9bda;
       }
     }
-    h5 {
-      font-size: 14px;
-      font-weight: bold;
-
-      color: $orange;
-    }
-    p {
-      font-size: 20px;
-      font-weight: 400;
-
-      color: $black;
-    }
     &:nth-child(odd) {
       text-align: center;
+      h5,
+      p {
+        background-color: #f0f0ef;
+      }
     }
     .title-desc {
-      margin-top: -10px;
-
-      background-color: #f0f0ef;
+      /* margin-top: -10px; */
       h5 {
         padding-top: 10px;
+
+        background-color: #f0f0ef;
       }
     }
   }
@@ -674,7 +678,7 @@ header {
         text-transform: none;
       }
     }
-    .important-title {
+    h5 {
       font-size: 18px;
       font-weight: bold;
 
@@ -692,6 +696,16 @@ header {
     }
   }
 }
+.row-with-divide {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  background-image: url(../img/divider.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  /* background-size: contain; */
+}
+
 .maincont {
   .breadcrumbs {
     padding-top: 45px;

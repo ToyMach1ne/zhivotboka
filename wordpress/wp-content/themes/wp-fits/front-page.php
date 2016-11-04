@@ -1,334 +1,116 @@
-<!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
-<head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php /* Template Name: Home Page Template */ get_header(); ?>
 
-  <title><?php wp_title( '' ); ?><?php if ( wp_title( '', false ) ) { echo ' :'; } ?> <?php bloginfo( 'name' ); ?></title>
+    <div class="row row-with-divide">
+      <h6 class="col-md-12 content-title">
+        Популярные статьи
+        <a href="#"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+        <a href="#"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></a>
+      </h6>
 
-  <link href="http://www.google-analytics.com/" rel="dns-prefetch"><!-- dns prefetch -->
+      <?php query_posts("showposts=6&cat=8"); ?>
+      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <!-- icons -->
-  <link href="<?php echo get_template_directory_uri(); ?>/favicon.ico" rel="shortcut icon">
-
-  <!--[if lt IE 9]>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <!-- css + javascript -->
-  <?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-  <header>
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-3 header--logo">
-          <h1><a href="#">ZHIVOTBOKA <span>медицинский портал о похудении</span></a></h1>
+        <div class="col-md-4 category-block">
+          <a href="<?php the_permalink(); ?>">
+            <span class="category-block-img">
+              <?php if ( has_post_thumbnail()) :
+                the_post_thumbnail('medium');
+              else: ?>
+                <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
+              <?php endif; ?>
+              <span><?php the_time('j F Y'); ?></span>
+            </span>
+            <h5>Рубрика</h5>
+            <?php wpeExcerpt('wpeExcerpt7'); ?>
+          </a>
         </div>
 
-        <div class="col-md-5 header--search">
-          <form action="" method="post" class="header--search-form">
-            <input type="search" name="" placeholder="Поиск по сайту" class="header--search-input" />
-            <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form><!-- header--search-form -->
+      <?php endwhile; endif; ?>
+      <?php wp_reset_query(); ?>
+
+    </div><!-- row-with-divide -->
+
+    <div class="row row-with-divide row-popular">
+      <h6 class="col-md-12 content-title">Популярные упражнения</h6>
+
+      <?php query_posts("showposts=6&cat=1"); ?>
+      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <div class="col-md-4 category-block">
+          <a href="<?php the_permalink(); ?>">
+            <span class="category-block-img">
+              <?php if ( has_post_thumbnail()) :
+                the_post_thumbnail('medium');
+              else: ?>
+                <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
+              <?php endif; ?>
+              <span><?php the_time('j F Y'); ?></span>
+            </span>
+            <h5>Рубрика</h5>
+            <?php wpeExcerpt('wpeExcerpt7'); ?>
+          </a>
         </div>
+      <?php endwhile; endif; ?>
+      <?php wp_reset_query(); ?>
+    </div><!-- row -->
 
-        <div class="col-md-4 header--advice">
-          <h5>Нужен дельный совет?</h5>
-          <p class="header--advice-name">Андрей Мищенко</p>
-          <p class="header--advice-descr">профессиональный тренер по фитнесу</p>
-        </div>
-
-      </div><!-- row -->
-      </div><!-- container -->
-  </header>
-    <section class="main-category-blocks">
-      <div class="container">
-        <div class="row">
-
-        <?php get_sidebar(); ?>
-
-            <!-- END OF SIDEBAR -->
-          <div class="col-md-9 maincont">
-                <div class="nav-container">
-                    <nav class="navigation">
-                      <ul class="headnav">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Обратная связь</a></li>
-                        <li><a href="#">Карта сайта</a></li>
-                        <li><a href="#">faq</a></li>
-                      </ul>
-                    </nav>
-                  </div><!-- /.nav-container -->
-
-                <div class="row">
-                      <div class="col-md-12 content-title">
-                        <h6>Популярные статьи <a href="#"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a><a href="#"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></a>
-                        </h6>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-1.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-2.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-3.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-4.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-5.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-6.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <img src="img/divider.png" alt="">
-                  </div>
-
-                    <div class="row">
-                      <div class="col-md-12 content-title">
-                        <h6>Популярные упражнения</h6>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-1.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-2.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-3.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-4.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-5.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-6.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <img src="img/divider.png" alt="">
-                  </div><!-- row -->
-
-                  <div class="row">
-                      <div class="col-md-12 content-title">
-                        <h6>Последние статьи</h6>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-1.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-2.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-3.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-4.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-5.png" alt=""><span>10 Октября 2016</span></span>
-                          <h5>Рубрика</h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </a>
-                      </div>
-                      <div class="col-md-4 category-block">
-                        <a href="#">
-                          <span class="category-block-img"><img src="img/category-img-6.png" alt=""><span>10 Октября 2016</span></span>
-                          <div class="title-desc">
-                            <h5>Рубрика</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          </div>
-                        </a>
-                      </div>
-                  </div><!-- row -->
-                  <div class="col-md-12">
-                    <div class="tag-cloud">
-                      <h6><i class="fa fa-tag" aria-hidden="true"></i>ТЭГИ:</h6>
-                      <a href="#">Curabitur</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Aliquamru</a>
-                      <a href="#">Integer</a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Maecentas</a>
-                      <a href="#">Nunc</a>
-                      <a href="#">Nullam</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Aliquamras</a>
-                      <a href="#">Integer </a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Aliquamras</a>
-                      <a href="#">Nullam</a>
-                      <a href="#">Curabitur</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Maecentas</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Integer</a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Aliquamras</a>
-                      <a href="#">Curabitur</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Maecentas</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Integer</a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Aliquamras</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Nunc</a>
-                      <a href="#">Aliquamru</a>
-                      <a href="#">Nullam</a>
-                      <a href="#">Maecentas</a>
-                      <a href="#">Curabitur</a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Integer</a>
-                      <a href="#">Nunc</a>
-                      <a href="#">Aliquamru</a>
-                      <a href="#">Phasellus</a>
-                      <a href="#">Fusceт</a>
-                      <a href="#">Nunc</a>
-                      <a href="#">Quisque</a>
-                      <a href="#">Integer</a>
-                      <p><a href="#">Показать все тэги <i class="fa fa-caret-down" aria-hidden="true"></i></a></p>
-                    </div><!-- tag-cloud -->
-                  </div><!-- col-md-12 -->
-                  <div class="col-md-12">
-                    <div class="content-block">
-                      <h6 class="content-slogan">ZhivotBoka <span class="content-title-bold">— медицинский портал о похудении</span></h6>
-                      <p>Duis sed tempus dolor. Vivamus dictum mollis felis, vitae faucibus nibh suscipit vel. Phasellus et justo a erat viverra imperdiet non non urna. Ut at ligula luctus purus lobortis blandit sed eget ligula. Nullam a lobortis nisl, in vehicula enim. Maecenas hendrerit velit vel magna maximus sollicitudin. Maecenas porttitor hendrerit magna, et porttitor elit hendrerit nec. Quisque et volutpat turpis. Donec finibus erat at massa iaculis, eget scelerisque tortor cursus. Quisque quis consequat ante. Sed et nisi in magna hendrerit accumsan. Maecenas ut quam eu ipsum pharetra egestas eget eu arcu.</p>
-
-                      <p>In laoreet mi in convallis porttitor. Maecenas dignissim scelerisque velit, ac porttitor nulla lacinia nec. Etiam risus turs, cidunt id mi eget, sagittis pretium purus. Nullam mi lorem, dapibus ut fermentum iaculis, tincidunt bibendum enim. Praesent suscipit posuere ante, ultrices elementum tortor pulvinar eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nunc. Proin ullamcorper nisi urna, a posuere libero feugiat vel. Fusce accumsan elit mollis libero molestie, sit amet efficitur metus fermentum. Nunc imperdiet nisl a libero maximus, nec vestibulum ex volutpat.</p>
-                      <h6 class="important-title">Это важно!</h6>
-                      <p>Nunc in luctus augue. Nam vitae tempus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque mollis accumsan pharetra. Proin ut turpis nec quam sollicitudin ultricies. Nunc et orci nec mi dignissim fringilla in ut eros. Nunc rhoncus ut tortor vitae malesuada. Curabitur urna augue, eleifend vel rutrum in, venenatis vel libero. Duis consectetur orci massa, ultrices bibendum magna pharetra sit amet. Quisque blandit sem et libero euismod porta. In hac habitasse platea dictumst. Phasellus quis ligula sit amet est maximus auctor id in ligula.</p>
-                    </div>
-                  </div>
-          </div><!-- /.col-md-9 maincont -->
-      </div><!-- row -->
-    </div><!-- container -->
-</section>
-<footer>
-  <div class="container">
     <div class="row">
-      <div class="col-md-5">
-        <ul class="footnav">
-          <li><a href="#">Главная</a></li>
-          <li><a href="#">Cвязаться с нами</a></li>
-          <li><a href="#">О нас</a></li>
-          <li><a href="#">Карта сайта</a></li>
-        </ul>
-        <p class="footer-e-mail">E-mail: <a href="#"><span>info@zhivotboka.ru</span></a></p>
-      </div>
-      <div class="col-md-7">
-        <p class="footer-text">«Медицинский портал о похудении предоставляет информацию исключительно для ознакомления. Не рекомендуем заниматься самолечением без консультации лечащего врача.»</p>
-      </div>
-    </div>
-    <div class="row footer-border">
-      <div class="col-md-7">
-        <p class="age-limit">16+</p>
-        <p class="rights">© 2016 Pohudeniepro.ru. Все права защищены.Копирование материалов разрешено только с указанием активной ссылки на первоисточник</p>
-      </div>
-      <div class="col-md-5">
-        <p class="soc-title">Мы в соцсетях - </p>
-        <ul class="social">
-          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-          <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>
-          <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-          <li><a href="#"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
-          <li class="arrow-up"><a href="#"><i class="fa fa-angle-up" aria-hidden="true"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+      <h6 class="col-md-12 content-title">Последние статьи</h6>
 
-</body>
-</html>
+      <?php query_posts("showposts=6&cat=8"); ?>
+      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <div class="col-md-4 category-block">
+          <a href="<?php the_permalink(); ?>">
+            <span class="category-block-img">
+              <?php if ( has_post_thumbnail()) :
+                the_post_thumbnail('medium');
+              else: ?>
+                <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
+              <?php endif; ?>
+              <span><?php the_time('j F Y'); ?></span>
+            </span>
+            <h5>Рубрика</h5>
+            <?php wpeExcerpt('wpeExcerpt7'); ?>
+          </a>
+        </div>
+      <?php endwhile; endif; ?>
+      <?php wp_reset_query(); ?>
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tag-cloud">
+          <h6><i class="fa fa-tag" aria-hidden="true"></i>ТЭГИ:</h6>
+          <?php
+            $args = array(
+              'smallest'                  => 16,
+              'largest'                   => 16,
+              'unit'                      => 'px',
+              'number'                    => 0,
+              'format'                    => 'flat',
+              'separator'                 => "\n",
+              'orderby'                   => 'name',
+              'order'                     => 'ASC',
+              'exclude'                   => null,
+              'include'                   => null,
+              'topic_count_text_callback' => default_topic_count_text,
+              'link'                      => 'view',
+              'taxonomy'                  => 'post_tag',
+              'echo'                      => true,
+              'child_of'                  => null, // see Note!
+            );
+            wp_tag_cloud( $args );
+          ?>
+          <p><a href="<?php bloginfo('url'); ?>/tags">Показать все тэги <i class="fa fa-caret-down" aria-hidden="true"></i></a></p>
+        </div><!-- tag-cloud -->
+      </div><!-- col-md-12 -->
+      <div class="col-md-12">
+        <div class="content-block">
+          <h6><?php the_title(); ?></h6>
+          <?php the_content(); ?>
+        </div><!-- content-block -->
+      </div>
+    </div><!-- /.row -->
+
+  </div><!-- /.col-md-9 maincont -->
+</div><!-- row -->
+<?php get_footer(); ?>

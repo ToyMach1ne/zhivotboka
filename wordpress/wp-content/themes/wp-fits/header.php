@@ -21,28 +21,41 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<!-- wrapper -->
-<div class="wrapper">
-  <header role="banner">
-    <div class="inner">
+  <header>
+    <div class="container">
+      <div class="row">
 
-      <div class="logo">
-        <?php if ( is_front_page() && is_home() ){ } else { ?>
-          <a href="<?php echo home_url(); ?>">
-            <?php  } ?>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="<?php wp_title( '' ); ?>" title="<?php wp_title( '' ); ?>" class="logo-img">
-            <?php if ( is_front_page() && is_home() ){
-            } else { ?>
-          </a>
-        <?php } ?>
-      </div><!-- /logo -->
+        <div class="col-md-3 header--logo">
+          <h1><a href="<?php echo home_url(); ?>">ZHIVOTBOKA <span>медицинский портал о похудении</span></a></h1>
+        </div>
 
-      <nav class="nav" role="navigation">
-        <?php wpeHeadNav(); ?>
-      </nav><!-- /nav -->
+        <div class="col-md-5 header--search">
+          <form action="<?php bloginfo('url'); ?>/" method="post" class="header--search-form">
+            <input type="search" name="s" placeholder="Поиск по сайту" class="header--search-input" />
+            <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </form><!-- header--search-form -->
+        </div>
 
-    </div><!-- /.inner -->
-  </header><!-- /header -->
+        <div class="col-md-4 header--advice">
+          <h5>Нужен дельный совет?</h5>
+          <p class="header--advice-name">Андрей Мищенко</p>
+          <p class="header--advice-descr">профессиональный тренер по фитнесу</p>
+        </div>
 
-  <section role="main">
-    <div class="inner">
+      </div><!-- row -->
+      </div><!-- container -->
+  </header>
+    <section class="main-category-blocks">
+      <div class="container">
+        <div class="row">
+
+        <?php get_sidebar(); ?>
+
+            <!-- END OF SIDEBAR -->
+          <div class="col-md-9 maincont">
+            <div class="nav-container">
+              <nav class="navigation">
+                <?php wpeHeadNav(); ?>
+              </nav>
+            </div><!-- /.nav-container -->
+
