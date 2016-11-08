@@ -29,6 +29,9 @@
     </div>
   </div>
 </footer>
+  <script>
+     window.home = "<?php echo home_url(); ?>";
+  </script>
   <?php wp_footer(); ?>
   <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
   <script src="//yastatic.net/share2/share.js"></script>

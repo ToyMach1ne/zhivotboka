@@ -21,3 +21,44 @@ if (typeof jQuery === 'undefined') {
   console.log('jQuery has loaded');
 }
 // Place any jQuery/helper plugins in here.
+
+
+
+$(function() {
+  if ($('body').hasClass('error-body')) {
+
+    var count = 9;
+    var redirect = window.home;
+
+    var $timer = $('.time span');
+
+    window.setTimeout(function() {
+      $timer.html(8);
+    }, 1000);
+    window.setTimeout(function() {
+      $timer.html(7);
+    }, 2000);
+    window.setTimeout(function() {
+      $timer.html(6);
+    }, 3000);
+    window.setTimeout(function() {
+      $timer.html(5);
+    }, 4000);
+    window.setTimeout(function() {
+      $timer.html(4);
+    }, 5000);
+    window.setTimeout(function() {
+      $timer.html(3);
+    }, 6000);
+    window.setTimeout(function() {
+      $timer.html(2);
+    }, 7000);
+    window.setTimeout(function() {
+      $timer.html(1);
+    }, 8000);
+    window.setTimeout(function() {
+      window.location.href = redirect;
+    }, 9000);
+
+  }
+});
