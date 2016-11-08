@@ -138,6 +138,20 @@ header {
       margin-top: 0;
     }
   }
+  .header--search {
+        .super-button {
+      display: none;
+    background-color: #f19b14;
+    width: 50px;
+    height: 44px;
+    color: #fff;
+    font-size: 20px;
+    border-bottom: 2px solid #c67e0c;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 2.1;
+    }
+  }
   .header--search-form {
     position: relative;
 
@@ -735,6 +749,8 @@ header {
     color: #3b94d9;
   }
 }
+
+
 .row-article {
   .single-title {
     font-size: 36px;
@@ -1321,6 +1337,7 @@ header {
     }
   }
 }
+
 footer {
   height: 200px;
 
@@ -1511,6 +1528,246 @@ footer {
     display: none;
   }
 }
+
+/* MEDIA QUERY */
+@media (max-width:1200px) {
+  .header--search {
+    .header--search-form {
+      width: 200px;
+      height: 30px;
+      .header--search-submit {
+        right: -15px;
+
+        height: 44px;
+      }
+    }
+  }
+}
+
+@media (max-width:1000px) {
+  header {
+    &:before {
+      top: 105px;
+    }
+
+  }
+  .sidebar {
+    .widget_text {
+      text-align: center;
+    }
+    .widget.widget_nav_menu {
+    h6 {
+      margin-top: 0;
+      &:after {
+        top: 15px;
+        left: 5%;
+      }
+    }
+  }
+    .widget-last-news {
+      display: flex;
+      flex-direction: column;
+      h6 {
+        text-align: center;
+      }
+    }
+  }
+
+  .header--search {
+    .header--search-form {
+      width: 200px;
+      height: 30px;
+      .header--search-submit {
+        right: -15px;
+        height: 44px;
+      }
+    }
+  }
+.maincont {
+  .row-with-divide {
+    h6 {
+      text-align: center;
+    }
+  }
+}
+  footer {
+    .footnav {
+      li {
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+    .footer-border {
+        .social {
+          .arrow-up {
+            margin-left: 0;
+          }
+        }
+    }
+  }
+}
+@media (max-width:775px) {
+  header {
+        padding-bottom: 30px;
+    .row {
+          display: flex;
+    justify-content: space-around;
+    .header--logo {
+      width: 50%;
+    }
+    .header--advice {
+      display: none;
+    }
+    }
+
+  }
+}
+@media (max-width:690px) {
+.main-category-blocks {
+  .tag-cloud {
+    height: auto;
+  }
+}
+  footer {
+    .col-md-7 {
+        display: none;
+      }
+      .col-md-5 {
+        width: 100%;
+        text-align: center;
+        ul {
+          text-align: center;
+    display: flex;
+    justify-content: center;
+        }
+      }
+    .footer-border {
+      .col-md-7 {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width:620px) {
+  .main-category-blocks {
+    .nav-container {
+      .navigation {
+        .headnav {
+          li {
+            padding: 0 10px;
+            a {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width:570px) {
+  .main-category-blocks {
+    .nav-container {
+      .navigation {
+        .headnav {
+          justify-content: center;
+          li {
+            padding: 0 5px;
+            a {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width:546px) {
+  header {
+    padding-bottom: 15px;
+  }
+}
+@media (max-width:530px) {
+header {
+  .row {
+    .header--logo {
+      width: 40%;
+    }
+    .header--search {
+      width: 60%;
+    }
+  }
+}
+}
+@media (max-width:485px) {
+header {
+  padding-bottom: 30px;
+  .row {
+    .header--logo {
+      width: 50%;
+      margin-left: 10px;
+      h1 {
+        a {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+.header--search {
+        .super-button {
+      display: block;
+          float: right;
+    }
+  .header--search-form {
+display: none;
+  }
+  .opened-menu-top {
+        position: absolute;
+    top: 80px;
+    z-index: 1;
+    right: 0;
+    .header--search-input {
+          width: 120px;
+    height: 20px;
+    }
+    .header--search-submit {
+          right: 28px;
+    height: 35px;
+    width: 40px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  }
+  }
+  }
+}
+}
+@media (max-width:380px) {
+  footer {
+    .footnav {
+      li {
+        a {
+          font-size: 12px;
+        }
+      }
+    }
+    .footer-border {
+        .social {
+          .arrow-up {
+            display: none;
+          }
+        }
+    }
+  }
+}
+/* END OF MEDIA QUERY */
+
+
+
+
+
 @import 'fonts/font_fontawesome';
 @import 'base64';
 @import 'import/print';

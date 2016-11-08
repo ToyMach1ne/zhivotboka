@@ -1,18 +1,24 @@
 <?php get_header(); ?>
-  <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-      <h1 class="page-title inner-title"><?php the_title(); ?></h1>
-      <?php the_content(); ?>
-      <?php edit_post_link(); ?>
+  <div class="row row-article">
 
-    </article>
-  <?php endwhile; else: // If 404 page error ?>
-    <article>
+    <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+      <?php if (function_exists('easy_breadcrumbs')) easy_breadcrumbs(); ?>
+      <h1 class="single-title inner-title"><?php the_title(); ?></h1>
 
-      <h2 class="page-title inner-title"><?php _e( 'Sorry, nothing to display.', 'wpeasy' ); ?></h2>
+      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <span class="date"><?php the_time('d F Y'); ?></span>
+        <?php the_content(); ?>
 
-    </article>
-  <?php endif; ?>
-<?php get_sidebar(); ?>
+
+
+      </article>
+    <?php endwhile; else: ?>
+      <article>
+        <h2 class="page-title inner-title"><?php _e( 'Sorry, nothing to display.', 'wpeasy' ); ?></h2>
+      </article>
+    <?php endif; ?>
+
+  </div><!-- row-article -->
+
 <?php get_footer(); ?>

@@ -25,18 +25,19 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-md-3 header--logo">
+        <div class="col-md-3 col-xs-2 header--logo">
           <h1><a href="<?php echo home_url(); ?>">ZHIVOTBOKA <span>медицинский портал о похудении</span></a></h1>
         </div>
 
-        <div class="col-md-5 header--search">
+        <div class="col-md-5 col-xs-5 header--search">
+        <a href="#" class="super-button super-button-opened"><span id="x" ><i class="fa fa-search" aria-hidden="true"></i></span></a>
           <form action="<?php bloginfo('url'); ?>/" method="post" class="header--search-form">
             <input type="search" name="s" placeholder="Поиск по сайту" class="header--search-input" />
             <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
           </form><!-- header--search-form -->
         </div>
 
-        <div class="col-md-4 header--advice">
+        <div class="col-md-4 col-xs-5 header--advice">
           <h5>Нужен дельный совет?</h5>
           <p class="header--advice-name">Андрей Мищенко</p>
           <p class="header--advice-descr">профессиональный тренер по фитнесу</p>
