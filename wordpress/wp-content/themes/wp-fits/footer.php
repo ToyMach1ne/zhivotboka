@@ -4,12 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5">
-        <ul class="footnav">
-          <li><a href="#">Главная</a></li>
-          <li><a href="#">Cвязаться с нами</a></li>
-          <li><a href="#">О нас</a></li>
-          <li><a href="#">Карта сайта</a></li>
-        </ul>
+        <?php wpeFootNav(); ?>
         <p class="footer-e-mail">E-mail: <a href="#"><span>info@zhivotboka.ru</span></a></p>
       </div>
       <div class="col-md-7">
@@ -35,5 +30,7 @@
   </div>
 </footer>
   <?php wp_footer(); ?>
+  <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+  <script src="//yastatic.net/share2/share.js"></script>
 </body>
 </html>
