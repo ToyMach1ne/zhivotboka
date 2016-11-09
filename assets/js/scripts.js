@@ -94,3 +94,19 @@ $('.close-mobile-menu').on('click', function(event) {
     $(this).removeClass('close-mobile-menu--show')
 
 })
+$(document).ready(function(){
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 0) {
+            $('.arrow-up').fadeIn();
+        } else {
+            $('.arrow-up').fadeOut();
+        }
+    });
+    $('.arrow-up').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
+});
+
