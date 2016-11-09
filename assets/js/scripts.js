@@ -64,17 +64,32 @@ $(function() {
 });
 $('.super-button').on('click', function(event) {
     $('.super-button').addClass('super-button-close');
-  var $navMenu = $('.header--search-form').addClass('opened-menu-top');
+  var $catMenu = $('.header--search-form').addClass('opened-menu-top');
 
   if ($(this).hasClass('super-button-opened-top')) {
-    $navMenu.fadeOut('fast');
+    $catMenu.fadeOut('fast');
     $('.super-button-top').removeClass('super-button-opened-top')
     $('.super-button-top').removeClass('clicked');
   }
   else {
-    $navMenu.css('display', 'flex');
+    $catMenu.css('display', 'flex');
     $('.super-button-top').addClass('super-button-opened-top')
     $('.super-button-top').addClass('clicked')
   }
 })
 
+$('.super-menu').on('click', function(event) {
+    $('.super-menu').addClass('super-menu-close');
+  var $navMenu = $('.headnav').addClass('opened-menu-top');
+
+  if ($(this).hasClass('super-menu-opened-top')) {
+    $navMenu.fadeOut('fast');
+    $('.super-menu-top').removeClass('super-menu-opened-top')
+    $('.super-menu-top').removeClass('clicked');
+  }
+  else {
+    $navMenu.css('display', 'flex');
+    $('.super-menu-top').addClass('super-menu-opened-top')
+    $('.super-menu-top').addClass('clicked')
+  }
+})

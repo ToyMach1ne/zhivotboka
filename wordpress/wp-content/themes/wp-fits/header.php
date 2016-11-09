@@ -48,7 +48,7 @@
   </header>
     <section class="main-category-blocks">
       <div class="container">
-        <div class="row">
+        <div class="row adaptive-display">
 
         <?php get_sidebar(); ?>
 
@@ -56,6 +56,7 @@
           <div class="col-md-9 maincont">
             <div class="nav-container">
               <nav class="navigation">
+              <a href="#" class="super-menu super-menu-opened"><span id="x" ><i class="fa fa-bars" aria-hidden="true"></i></span></a>
                 <?php wpeHeadNav(); ?>
               </nav>
             </div><!-- /.nav-container -->
