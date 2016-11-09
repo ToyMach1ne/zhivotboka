@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-md-5 col-xs-5 header--search">
-        <a href="#" class="super-button super-button-opened"><span id="x" ><i class="fa fa-search" aria-hidden="true"></i></span></a>
+        <a href="#" class="super-button"><i class="fa fa-search" aria-hidden="true"></i></a>
           <form action="<?php bloginfo('url'); ?>/" method="post" class="header--search-form">
             <input type="search" name="s" placeholder="Поиск по сайту" class="header--search-input" />
             <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -56,8 +56,9 @@
           <div class="col-md-9 maincont">
             <div class="nav-container">
               <nav class="navigation">
-              <a href="#" class="super-menu super-menu-opened"><span id="x" ><i class="fa fa-bars" aria-hidden="true"></i></span></a>
+              <a href="#" class="super-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 <?php wpeHeadNav(); ?>
               </nav>
+              <a href="#" class="close-mobile-menu">X</a>
             </div><!-- /.nav-container -->
 
