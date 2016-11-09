@@ -94,3 +94,4 @@ $('.close-mobile-menu').on('click', function(event) {
     $(this).removeClass('close-mobile-menu--show')
 
 })
+
