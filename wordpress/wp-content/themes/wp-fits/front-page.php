@@ -14,13 +14,13 @@
           <a href="<?php the_permalink(); ?>">
             <span class="category-block-img">
               <?php if ( has_post_thumbnail()) :
-                the_post_thumbnail('medium');
+                the_post_thumbnail('small');
               else: ?>
                 <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5>Рубрика</h5>
+            <h5><?php the_category(', '); ?></h5>
             <?php wpeExcerpt('wpeExcerpt7'); ?>
           </a>
         </div>
@@ -39,13 +39,13 @@
           <a href="<?php the_permalink(); ?>">
             <span class="category-block-img">
               <?php if ( has_post_thumbnail()) :
-                the_post_thumbnail('medium');
+                the_post_thumbnail('small');
               else: ?>
                 <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5>Рубрика</h5>
+            <h5><?php the_category(', '); ?></h5>
             <?php wpeExcerpt('wpeExcerpt7'); ?>
           </a>
         </div>
@@ -62,13 +62,13 @@
           <a href="<?php the_permalink(); ?>">
             <span class="category-block-img">
               <?php if ( has_post_thumbnail()) :
-                the_post_thumbnail('medium');
+                the_post_thumbnail('small');
               else: ?>
                 <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5>Рубрика</h5>
+            <h5><?php the_category(', '); ?></h5>
             <?php wpeExcerpt('wpeExcerpt7'); ?>
           </a>
         </div>

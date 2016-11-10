@@ -26,11 +26,17 @@
       <div class="row">
 
         <div class="col-md-3 col-xs-2 header--logo">
-          <h1><a href="<?php echo home_url(); ?>">ZHIVOTBOKA <span>медицинский портал о похудении</span></a></h1>
+          <?php if ( !is_page(22) ){  ?>
+            <a href="<?php echo home_url(); ?>">
+          <?php  } ?>
+            ZHIVOTBOKA <span>медицинский портал о похудении</span>
+          <?php if ( !is_page(22) ){  ?>
+            </a>
+          <?php } ?>
         </div>
 
         <div class="col-md-5 col-xs-5 header--search">
-        <a href="#" class="super-button"><i class="fa fa-search" aria-hidden="true"></i></a>
+          <a href="#" class="super-button"><i class="fa fa-search" aria-hidden="true"></i></a>
           <form action="<?php bloginfo('url'); ?>/" method="post" class="header--search-form">
             <input type="search" name="s" placeholder="Поиск по сайту" class="header--search-input" />
             <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
