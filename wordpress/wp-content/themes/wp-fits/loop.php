@@ -4,7 +4,7 @@
     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
       <span class="category-block-img">
         <?php if ( has_post_thumbnail()) :
-          the_post_thumbnail('medium');
+          the_post_thumbnail('small');
         else: ?>
           <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
         <?php endif; ?>
