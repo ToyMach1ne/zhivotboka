@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 tag-block">
   <div class="tag-cloud">
     <h6><i class="fa fa-tag" aria-hidden="true"></i>ТЭГИ:</h6>
     <?php
