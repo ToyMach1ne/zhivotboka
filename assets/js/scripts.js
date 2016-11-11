@@ -108,4 +108,9 @@ $(document).ready(function() {
     }, 400);
     return false;
   });
+
+  if ( $('.category-list-wrapper .categories li').hasClass('cat-item-none') ) {
+    $('.category-list-wrapper').hide('fast');
+  }
+
 });
