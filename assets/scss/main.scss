@@ -242,7 +242,7 @@ header {
       color: #29272a;
     }
     &.widget_nav_menu {
-      h6 {
+      .widget-title {
         font-size: 18px;
         font-weight: bold;
 
@@ -1701,6 +1701,24 @@ footer {
     display: none;
   }
 }
+/* .archive {
+  .main-category-blocks {
+    &:nth-child(even) {
+      text-align: center;
+      h5,
+      p {
+        background-color: #f0f0ef;
+      }
+    }
+     &:nth-child(odd) {
+      text-align: left;
+      h5,
+      p {
+        background-color: #fff;
+      }
+    }
+  }
+} */
 
 /* MEDIA QUERY */
 @media (max-width:2500px) {

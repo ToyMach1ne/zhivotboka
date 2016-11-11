@@ -3,7 +3,7 @@ define('DB_NAME', 'pohudenie');
 define('DB_USER', 'pohudenie');
 define('DB_PASSWORD', 'pohudenie');
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', '192.168.1.4');
 
 define('DISABLE_WP_CRON', true);
 define('FS_METHOD', 'direct');
