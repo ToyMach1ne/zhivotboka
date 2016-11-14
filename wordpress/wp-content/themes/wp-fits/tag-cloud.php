@@ -21,5 +21,6 @@
       );
       wp_tag_cloud( $args );
     ?>
+    <span class="tag-show">Показать все теги</span>
   </div><!-- tag-cloud -->
 </div><!-- col-md-12 -->

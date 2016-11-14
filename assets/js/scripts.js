@@ -22,8 +22,6 @@ if (typeof jQuery === 'undefined') {
 }
 // Place any jQuery/helper plugins in here.
 
-
-
 $(function() {
   if ($('body').hasClass('error-body')) {
 
@@ -112,5 +110,10 @@ $(document).ready(function() {
   if ( $('.category-list-wrapper .categories li').hasClass('cat-item-none') ) {
     $('.category-list-wrapper').hide('fast');
   }
+
+  $('.tag-show').on('click', function(){
+    $('.tag-cloud a').css('display', 'inline-block');
+    $(this).hide('fast');
+  })
 
 });

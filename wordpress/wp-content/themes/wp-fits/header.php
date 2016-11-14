@@ -39,7 +39,7 @@
           <a href="#" class="super-button"><i class="fa fa-search" aria-hidden="true"></i></a>
           <form action="<?php bloginfo('url'); ?>/" method="post" class="header--search-form">
             <input type="search" name="s" placeholder="Поиск по сайту" class="header--search-input" />
-            <button class="header--search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button class="header--search-submit"></button>
           </form><!-- header--search-form -->
         </div>
 

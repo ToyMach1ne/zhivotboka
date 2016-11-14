@@ -1,0 +1,57 @@
+$rb-font-path: '../fonts' !default;
+
+@font-face {
+  font-family: 'PT Sans';
+  font-weight: 400;
+  font-style: normal;
+
+  src: url('#{$rb-font-path}/ptsans-regular.eot');
+  src: local('PT Sans'),
+  local('ptsans-regular'),
+  url('#{$rb-font-path}/ptsans-regular.eot') format('embedded-opentype'),
+  url('#{$rb-font-path}/ptsans-regular.woff') format('woff'),
+  url('#{$rb-font-path}/ptsans-regular.ttf') format('truetype'),
+  url('#{$rb-font-path}/ptsans-regular.svg#open_sanslight') format('svg');
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-weight: 400;
+  font-style: italic;
+
+  src: url('#{$rb-font-path}/ptsans-regular-italic.eot');
+  src: local('PT Sans'),
+  local('ptsans-regular-italic'),
+  url('#{$rb-font-path}/ptsans-regular-italic.eot') format('embedded-opentype'),
+  url('#{$rb-font-path}/ptsans-regular-italic.woff') format('woff'),
+  url('#{$rb-font-path}/ptsans-regular-italic.ttf') format('truetype'),
+  url('#{$rb-font-path}/ptsans-regular-italic.svg#open_sanslight') format('svg');
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-weight: 700;
+  font-style: normal;
+
+  src: url('#{$rb-font-path}/ptsans-bold.eot');
+  src: local('PT Sans'),
+  local('ptsans-bold'),
+  url('#{$rb-font-path}/ptsans-bold.eot') format('embedded-opentype'),
+  url('#{$rb-font-path}/ptsans-bold.woff') format('woff'),
+  url('#{$rb-font-path}/ptsans-bold.ttf') format('truetype'),
+  url('#{$rb-font-path}/ptsans-bold.svg#open_sanslight') format('svg');
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-weight: 700;
+  font-style: italic;
+
+  src: url('#{$rb-font-path}/ptsans-bold-italic.eot');
+  src: local('PT Sans'),
+  local('ptsans-bold-italic'),
+  url('#{$rb-font-path}/ptsans-bold-italic.eot') format('embedded-opentype'),
+  url('#{$rb-font-path}/ptsans-bold-italic.woff') format('woff'),
+  url('#{$rb-font-path}/ptsans-bold-italic.ttf') format('truetype'),
+  url('#{$rb-font-path}/ptsans-bold-italic.svg#open_sanslight') format('svg');
+}
