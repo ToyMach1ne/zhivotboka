@@ -10,8 +10,8 @@
         <?php endif; ?>
         <span><?php the_time('j F Y'); ?></span>
       </span>
-      <h5><?php the_title(); ?></h5>
-      <?php wpeExcerpt('wpeExcerpt7'); ?>
+
+      <p><?php the_title(); ?></p>
     </a>
   </div>
 

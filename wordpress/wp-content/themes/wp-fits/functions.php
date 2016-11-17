@@ -182,21 +182,22 @@ if (function_exists('register_sidebar')) {
     'after_title' => '</span>'
   ));
   //  Define Sidebar Widget Area 2. If your want to display more widget - uncoment this
-  /*
   register_sidebar(array(
     'name' => __('Блок виджетов #2', 'wpeasy'),
     'description' => __('Description for this widget-area...', 'wpeasy'),
     'id' => 'widgetarea2',
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget' => '</div>',
-    'before_title' => '<h6>',
-    'after_title' => '</h6>'
+    'before_title' => '<span class="widget-title">',
+    'after_title' => '</span>'
   ));
-  */
 }
 
 //  Custom Excerpts
 //  RU: Произвольное обрезание текста
+function wpeExcerpt6($length) {
+  return 4;
+}
 function wpeExcerpt7($length) {
   return 7;
 }
@@ -491,13 +492,13 @@ function easy_breadcrumbs() {
             if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
         } else {
             $cat = get_the_category(); $cat = $cat[0];
-            $cats = get_category_parents($cat, TRUE, $delimiter);
+            $cats = get_category_parents($cat, TRUE, '');
             if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
             $cats = str_replace('<a', $link_before . '<a' . $link_attr, $cats);
             $cats = str_replace('</a>', '</a>' . $link_after, $cats);
             if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
             echo $cats;
-            if ($show_current == 1) echo $before . get_the_title() . $after;
+          /*  if ($show_current == 1) echo $before . get_the_title() . $after; */
         }
 
     } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
