@@ -926,8 +926,8 @@ header {
 .breadcrumbs {
   font-size: 13px;
 
-  margin-bottom: 20px;
-  padding-top: 53px;
+  margin-bottom: 12px;
+  padding-top: 40px;
 
   color: #3b94d9;
   a {
@@ -942,7 +942,7 @@ header {
     font-size: 36px;
     font-weight: bold;
 
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
   span {
     &.date {
@@ -952,7 +952,7 @@ header {
 
       display: inline-block;
 
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       /* margin-left: 21px; */
       padding: 0 14px;
 
@@ -2067,6 +2067,17 @@ footer {
   header {
     padding-bottom: 15px;
   }
+    #toc_container {
+    .toc_list {
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    li {
+      width: 100% !important;
+          margin-bottom: 20px;
+    }
+    }
+  }
 }
 
 @media (max-width:530px) {
@@ -2139,8 +2150,8 @@ footer {
 
         position: fixed;
         z-index: 51;
-        top: 30%;
-        left: 47%;
+        top: 3%;
+        right: 4%;
 
         display: block;
 
@@ -2170,6 +2181,13 @@ footer {
           padding-bottom: 15px;
 
           text-align: center;
+          i {
+            &:before {
+              position: absolute;
+              left: 4%;
+              top:-18px;
+            }
+          }
         }
         .headnav {
           display: none;
@@ -2192,13 +2210,16 @@ footer {
           justify-content: flex-start;
           li {
             display: block;
-
+            height: 40px;
             width: 100%;
             height: auto;
+            &:first-child {
+              padding-top: 15px;
+            }
             span,
             a {
               font-size: 18px;
-
+              line-height: 2.4;
               color: #fff;
             }
           }
