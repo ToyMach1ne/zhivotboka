@@ -23,11 +23,11 @@
           <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>
           <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
           <li><a href="#"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
-          <li class="arrow-up"><a href="#"><i class="fa fa-angle-up" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </div>
   </div>
+  <a href="#" class="arrow-up" id="arrow-up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 </footer>
   <script>
      window.home = "<?php echo home_url(); ?>";
