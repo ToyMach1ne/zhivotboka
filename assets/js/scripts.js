@@ -74,7 +74,7 @@ $('.super-button').on('click', function(event) {
 })
 
 $('.super-menu').on('click', function(event) {
-  var $navMenu = $('.headnav');
+  var $navMenu = $('.widget_nav_menu');
 
   if ($(this).hasClass('super-menu-opened')) {
     $navMenu.removeClass('headnav-opened');
@@ -87,7 +87,7 @@ $('.super-menu').on('click', function(event) {
   }
 })
 $('.close-mobile-menu').on('click', function(event) {
-  $('.headnav').removeClass('headnav-opened');
+  $('.widget_nav_menu').removeClass('headnav-opened');
   $('.super-menu').removeClass('super-menu-opened')
   $(this).removeClass('close-mobile-menu--show')
 

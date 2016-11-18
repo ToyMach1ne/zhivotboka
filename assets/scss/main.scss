@@ -2167,7 +2167,7 @@ footer {
         opacity: .7;
         color: #fff;
         border-radius: 50%;
-        background-color: #f19b14;
+        background-color: rgba(0,0,0,.6);
         &:hover {
           text-decoration: none;
 
@@ -2176,6 +2176,11 @@ footer {
         }
       }
       .navigation {
+        .headnav {
+          position: relative;
+    top: -63px;
+    float: right;
+        }
         .super-menu {
           font-size: 40px;
 
@@ -2192,8 +2197,35 @@ footer {
             }
           }
         }
-        .headnav {
+      }
+    }
+  }
+  .single {
+    .row-article {
+      article {
+        table {
+          tr {
+            font-size: 10px;
+          }
+        }
+        .rating-socials {
+          .ya-share2 {
+            ul {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sidebar {
+.widget_nav_menu {
           display: none;
+          .widget-title {
+            &:after {
+              display: none !important;
+            }
+          }
         }
         .headnav-opened {
           position: fixed;
@@ -2226,24 +2258,24 @@ footer {
               color: #fff;
             }
           }
-        }
-      }
-    }
-  }
-  .single {
-    .row-article {
-      article {
-        table {
-          tr {
-            font-size: 10px;
-          }
-        }
-        .rating-socials {
-          .ya-share2 {
-            ul {
-              text-align: center;
+
+          #menu-sidebar {
+            li {
             }
           }
+        }
+  }
+}
+@media (max-width:400px) {
+  .maincont {
+    .nav-container {
+      .navigation {
+        .headnav {
+        li {
+          a {
+            font-size: 12px;
+          }
+        }
         }
       }
     }
@@ -2253,6 +2285,14 @@ footer {
 .maincont {
     .nav-container {
       .navigation {
+        .headnav {
+          top:-70px;
+        li {
+          a {
+            font-size: 11px;
+          }
+        }
+        }
         .super-menu {
           i {
             &:before {
@@ -2308,7 +2348,22 @@ footer {
     }
   }
 }
-
+@media (max-width:355px) {
+  .maincont {
+    .nav-container {
+      .navigation {
+        .headnav {
+        li {
+          padding:0 3px;
+          a {
+            font-size: 10px;
+          }
+        }
+        }
+      }
+    }
+  }
+}
 
 /* END OF MEDIA QUERY */
 
