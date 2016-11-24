@@ -56,9 +56,12 @@
       <div class="container">
         <div class="row adaptive-display">
 
-        <?php if (is_single() || is_category()) {
+        <?php if ( is_category()) {
           get_sidebar('category');
-        } else {
+        } elseif (is_single()) {
+          get_sidebar('single');
+        }
+        else {
           get_sidebar();
         } ?>
 
