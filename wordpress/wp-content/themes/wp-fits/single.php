@@ -18,11 +18,7 @@
           <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
           <div class="ya-share2" data-services="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div>
         </div><!-- /.rating-socials -->
-
-
-        <?php get_template_part( 'relative-pages' ) ?>
-
-
+        <?php related_posts(); ?>
         <?php comments_template(); ?>
       </article>
     <?php endwhile; else: ?>
