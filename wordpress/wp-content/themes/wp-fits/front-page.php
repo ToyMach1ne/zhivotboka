@@ -21,7 +21,7 @@
               <span><?php the_time('j F Y'); ?></span>
             </span>
             <h5><?php the_category(', '); ?></h5>
-            <?php wpeExcerpt('wpeExcerpt7'); ?>
+            <p><?php the_title() ?></p>
           </a>
         </div>
 
@@ -33,7 +33,7 @@
     <div class="row row-with-divide row-popular">
       <h6 class="col-md-12 content-title">Популярные упражнения</h6>
 
-      <?php query_posts("showposts=6&cat=1"); ?>
+      <?php query_posts("showposts=6&cat=99"); ?>
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div class="col-md-4 category-block">
           <a href="<?php the_permalink(); ?>">
@@ -46,7 +46,7 @@
               <span><?php the_time('j F Y'); ?></span>
             </span>
             <h5><?php the_category(', '); ?></h5>
-            <?php wpeExcerpt('wpeExcerpt7'); ?>
+            <p><?php the_title() ?></p>
           </a>
         </div>
       <?php endwhile; endif; ?>
@@ -69,7 +69,7 @@
               <span><?php the_time('j F Y'); ?></span>
             </span>
             <h5><?php the_category(', '); ?></h5>
-            <?php wpeExcerpt('wpeExcerpt7'); ?>
+            <p><?php the_title() ?></p>
           </a>
         </div>
       <?php endwhile; endif; ?>
