@@ -8,7 +8,10 @@
 
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <span class="date"><?php the_time('d F Y'); ?></span>
+
         <?php the_content(); ?>
+
+        <?php wpb_set_post_views(get_the_ID()); ?>
 
         <div class="article-tags">
           <span class="article-tags--title">ТЭГИ:</span><?php the_tags( '', '', ''); ?>

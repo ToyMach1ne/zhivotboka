@@ -3,12 +3,11 @@
     <div class="row row-with-divide">
       <h6 class="col-md-12 content-title">
         Популярные статьи
-<!--         <a href="#"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-        <a href="#"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></a> -->
       </h6>
 
-      <?php query_posts("showposts=6&cat=8"); ?>
-      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <?php $popularpost = new WP_Query( array( 'posts_per_page' => 6, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+      while ( $popularpost->have_posts() ) : $popularpost->the_post();
+      ?>
 
         <div class="col-md-4 category-block">
           <a href="<?php the_permalink(); ?>">
@@ -20,12 +19,14 @@
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5><?php the_category(', '); ?></h5>
+          </a>
+          <h5><?php the_category(', '); ?></h5>
+          <a href="<?php the_permalink(); ?>">
             <p><?php the_title() ?></p>
           </a>
         </div>
 
-      <?php endwhile; endif; ?>
+      <?php endwhile; ?>
       <?php wp_reset_query(); ?>
 
     </div><!-- row-with-divide -->
@@ -45,7 +46,9 @@
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5><?php the_category(', '); ?></h5>
+          </a>
+          <h5><?php the_category(', '); ?></h5>
+          <a href="<?php the_permalink(); ?>">
             <p><?php the_title() ?></p>
           </a>
         </div>
@@ -68,7 +71,9 @@
               <?php endif; ?>
               <span><?php the_time('j F Y'); ?></span>
             </span>
-            <h5><?php the_category(', '); ?></h5>
+          </a>
+          <h5><?php the_category(', '); ?></h5>
+          <a href="<?php the_permalink(); ?>">
             <p><?php the_title() ?></p>
           </a>
         </div>

@@ -332,7 +332,12 @@ header {
 
         border-bottom: 1px dashed #f0f0ef;
         a {
-          display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
 
           width: 100%;
           height: 100%;
@@ -380,8 +385,8 @@ header {
         }
         p {
           font-size: 15px;
+padding-left: 10px;
 
-          display: flex;
           float: right;
 
           width: calc(100% - 125px);
@@ -692,7 +697,7 @@ header {
 
       margin: 0;
       margin-bottom: 10px;
-      padding-top: 20px;
+      padding-top: 0;
       padding-bottom: 10px;
 
       color: $black;
@@ -1745,7 +1750,6 @@ footer {
   position: fixed;
   right: 50px;
   bottom: 50px;
-
   /* display: block; */
   /* display: none; */
 
@@ -1848,53 +1852,58 @@ footer {
     display: none;
   }
 }
-.single  {
+.single {
   .yarpp-related {
-width: 100%;
-padding-bottom: 100px;
-  border-bottom: 1px solid #e9e9e9;
-  .yarpp-thumbnail {
-    width: 120px;
-    height: 120px;
-        position: relative;
-    &:after {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            cursor: pointer;
-            transition: all .5s;
-            opacity: 0;
-            color: #fff;
-            background-color: rgba(0, 0, 0, .35);
-            @extend .dblock;
-            width: 120px;
-            height: 120px;
-          }
-          &:hover {
-            &:after {
-              opacity: 1;
-            }
-          .yarpp-thumbnail-title {
-            color: #61b2f0;
-          }
+    width: 100%;
+    padding-bottom: 100px;
 
+    border-bottom: 1px solid #e9e9e9;
+    .yarpp-thumbnail {
+      position: relative;
 
+      width: 120px;
+      height: 120px;
+      &:after {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 120px;
+        height: 120px;
+
+        cursor: pointer;
+        transition: all .5s;
+
+        opacity: 0;
+        color: #fff;
+        background-color: rgba(0, 0, 0, .35);
+
+        @extend .dblock;
+      }
+      &:hover {
+        &:after {
+          opacity: 1;
         }
-    img {
-      max-width: 100%;
-    min-height: 100%;
-    margin-bottom: 0;
-    }
-    .yarpp-thumbnail-title {
-          color: #3b94d9;
-    font-size: 15px;
-    font-weight: 400;
+        .yarpp-thumbnail-title {
+          color: #61b2f0;
+        }
+      }
+      img {
+        max-width: 100%;
+        min-height: 100%;
+        margin-bottom: 0;
+      }
+      .yarpp-thumbnail-title {
+        font-size: 15px;
+        font-weight: 400;
+
+        color: #3b94d9;
+      }
     }
   }
-}
 }
 
 
@@ -2122,15 +2131,16 @@ padding-bottom: 100px;
   header {
     padding-bottom: 15px;
   }
-    #toc_container {
+  #toc_container {
     .toc_list {
       display: flex;
-    flex-direction: column;
-    align-items: center;
-    li {
-      width: 100% !important;
-          margin-bottom: 20px;
-    }
+      flex-direction: column;
+
+      align-items: center;
+      li {
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
     }
   }
 }
@@ -2230,8 +2240,9 @@ padding-bottom: 100px;
       .navigation {
         .headnav {
           position: relative;
-    top: -63px;
-    float: right;
+          top: -63px;
+
+          float: right;
         }
         .super-menu {
           font-size: 40px;
@@ -2244,8 +2255,8 @@ padding-bottom: 100px;
           i {
             &:before {
               position: absolute;
+              top: -5px;
               left: 4%;
-              top:-5px;
             }
           }
         }
@@ -2271,51 +2282,52 @@ padding-bottom: 100px;
     }
   }
   .sidebar {
-.widget_nav_menu {
-          display: none;
-          .widget-title {
-            &:after {
-              display: none !important;
-            }
-          }
+    .widget_nav_menu {
+      display: none;
+      .widget-title {
+        &:after {
+          display: none !important;
         }
-        .headnav-opened {
-          position: fixed;
-          z-index: 15;
-          top: 1px;
-          right: 0;
-          bottom: 0;
-          left: 0;
+      }
+    }
+    .headnav-opened {
+      position: fixed;
+      z-index: 15;
+      top: 1px;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-          display: flex;
-          flex-direction: column;
+      display: flex;
+      flex-direction: column;
 
-          height: 100%;
+      height: 100%;
 
-          background-color: rgba(0, 0, 0, .60);
+      background-color: rgba(0, 0, 0, .60);
 
-          justify-content: flex-start;
-          li {
-            display: block;
-            height: 40px;
-            width: 100%;
-            height: auto;
-            &:first-child {
-              padding-top: 15px;
-            }
-            span,
-            a {
-              font-size: 18px;
-              line-height: 2.4;
-              color: #fff;
-            }
-          }
+      justify-content: flex-start;
+      li {
+        display: block;
 
-          #menu-sidebar {
-            li {
-            }
-          }
+        width: 100%;
+        height: 40px;
+        height: auto;
+        &:first-child {
+          padding-top: 15px;
         }
+        span,
+        a {
+          font-size: 18px;
+          line-height: 2.4;
+
+          color: #fff;
+        }
+      }
+      #menu-sidebar {
+        li {
+        }
+      }
+    }
   }
 }
 @media (max-width:400px) {
@@ -2323,34 +2335,34 @@ padding-bottom: 100px;
     .nav-container {
       .navigation {
         .headnav {
-        li {
-          a {
-            font-size: 12px;
+          li {
+            a {
+              font-size: 12px;
+            }
           }
-        }
         }
       }
     }
   }
 }
 @media (max-width:390px) {
-.maincont {
+  .maincont {
     .nav-container {
       .navigation {
         .headnav {
-          top:-70px;
-        li {
-          a {
-            font-size: 11px;
+          top: -70px;
+          li {
+            a {
+              font-size: 11px;
+            }
           }
-        }
         }
         .super-menu {
           i {
             &:before {
               position: absolute;
+              top: -17px;
               left: 4%;
-              top:-17px;
             }
           }
         }
@@ -2405,12 +2417,12 @@ padding-bottom: 100px;
     .nav-container {
       .navigation {
         .headnav {
-        li {
-          padding:0 3px;
-          a {
-            font-size: 10px;
+          li {
+            padding: 0 3px;
+            a {
+              font-size: 10px;
+            }
           }
-        }
         }
       }
     }
