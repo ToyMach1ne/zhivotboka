@@ -120,9 +120,6 @@ $(document).ready(function() {
     var currentUrl = window.location.href;
     var currentUrl2 = document.URL;
 
-    console.log(currentUrl)
-    console.log(currentUrl2)
-
     var thisHref = $(this).attr('href');
 
     if ((thisHref == currentUrl) || (thisHref == currentUrl2)) {
@@ -134,9 +131,6 @@ $(document).ready(function() {
   $('#menu-sidebar a').each(function(index, el) {
     var currentUrl = window.location.href;
     var currentUrl2 = document.URL;
-
-    console.log(currentUrl)
-    console.log(currentUrl2)
 
     var thisHref = $(this).attr('href');
 
